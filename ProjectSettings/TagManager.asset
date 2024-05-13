@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - WaypointManager
+  - ground2d
+  - 2dReplace
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ground
   - Water
   - UI
   - 

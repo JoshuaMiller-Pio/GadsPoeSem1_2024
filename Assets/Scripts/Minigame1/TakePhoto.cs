@@ -27,7 +27,6 @@ public class TakePhoto : MonoBehaviour
                 {
                     if (hit[i].collider.gameObject.tag == "Rhino")
                     {
-                        Debug.Log("Click");
                         Debug.Log(  hit[i].collider.gameObject.name +hit[i].distance);
                       
                     }
