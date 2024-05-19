@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class Rhino : MonoBehaviour
 {
+    public UIManager _UIManager;
     public NavMeshAgent agent;
     public float currentHappiness, currentCleanliness, currentHealth, currentSleep, currentHunger, currentActivity;
     public GameObject[] waypoints = new GameObject[12];
@@ -43,6 +44,7 @@ public class Rhino : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _UIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = 3f;
         _WaypointManager = GameObject.FindGameObjectWithTag("WaypointManager").GetComponent<WaypointManager>();
@@ -56,6 +58,11 @@ public class Rhino : MonoBehaviour
         currentHealth = rhinoScript.maxHealth;
         currentHunger = rhinoScript.maxHunger;
         currentSleep = rhinoScript.maxSleep;
+    }
+
+    private void OnMouseDown()
+    {
+        _UIManager.UpdateRhinoInfo(this);
     }
 
     private void OnTriggerEnter(Collider other)

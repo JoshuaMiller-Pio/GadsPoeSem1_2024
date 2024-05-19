@@ -9,8 +9,11 @@ public class UIManager : MonoBehaviour
     public TMP_Text rhinoName, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise;
 
     public Image rhinoPhoto;
-    
-    
+
+    public void UpdateRhinoInfo(Rhino selectedRhino)
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {

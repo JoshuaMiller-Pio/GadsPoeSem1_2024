@@ -9,6 +9,7 @@ TagManager:
   - 2dReplace
   - Rhino
   - Waypoint
+  - UIManager
   layers:
   - Default
   - TransparentFX
