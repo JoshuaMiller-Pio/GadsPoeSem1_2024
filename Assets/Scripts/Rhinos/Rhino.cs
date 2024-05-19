@@ -83,12 +83,22 @@ public class Rhino : MonoBehaviour
 
     public void Eat()
     {
-        
+        agent.destination = waypoints[2].transform.position;
+        currentHunger = currentHunger + 10;
+        if (currentHunger > rhinoScript.maxHunger)
+        {
+            currentHunger = rhinoScript.maxHunger;
+        }
     }
 
     public void Clean()
     {
-        
+        agent.destination = waypoints[3].transform.position;
+        currentCleanliness = currentCleanliness + 30;
+        if (currentCleanliness > rhinoScript.maxHunger)
+        {
+            currentCleanliness = rhinoScript.maxHunger;
+        }
     }
 
     public void Play()
@@ -98,7 +108,12 @@ public class Rhino : MonoBehaviour
 
     public void Sleep()
     {
-        
+        agent.destination = waypoints[0].transform.position;
+        currentSleep= currentSleep + 50;
+        if (currentSleep > rhinoScript.maxHunger)
+        {
+            currentSleep = rhinoScript.maxHunger;
+        }
     }
     
     // Update is called once per frame
