@@ -7,6 +7,8 @@ TagManager:
   - WaypointManager
   - ground2d
   - 2dReplace
+  - Rhino
+  - Waypoint
   layers:
   - Default
   - TransparentFX

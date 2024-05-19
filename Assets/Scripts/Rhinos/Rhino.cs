@@ -1,16 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 
 public class Rhino : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float currentHappiness, currentCleanliness, currentHealth, currentSleep, currentHunger, currentActivity;
-    public Vector3[] waypoints = new Vector3[12];
-    public Vector3 currentTarget;
+    public GameObject[] waypoints = new GameObject[12];
+    public GameObject currentTarget;
+    public Vector3 currentTargetLocation;
     public RhinoScriptable rhinoScript;
     public RhinoAction currentAction, previousAction;
     public WaypointManager _WaypointManager;
@@ -41,11 +44,11 @@ public class Rhino : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = 1;
+        agent.speed = 3f;
         _WaypointManager = GameObject.FindGameObjectWithTag("WaypointManager").GetComponent<WaypointManager>();
         for (int i = 0; i < waypoints.Length; i++)
         {
-            waypoints[i] = _WaypointManager.waypoints[i].transform.position;
+            waypoints[i] = _WaypointManager.waypoints[i];
         }
         ChangeAction(RhinoAction.Idle);
         currentHappiness = rhinoScript.maxHappiness;
@@ -55,11 +58,27 @@ public class Rhino : MonoBehaviour
         currentSleep = rhinoScript.maxSleep;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == currentTarget && currentAction == RhinoAction.Idle)
+        {
+            int i = Random.Range(0, waypoints.Length);
+            GameObject newTarget = waypoints[i];
+            while (newTarget == currentTarget)
+            {
+                i = Random.Range(0, waypoints.Length);
+                newTarget = waypoints[i];
+            }
+            currentTarget = newTarget;
+            agent.destination = currentTarget.transform.position;
+        }
+    }
+
     public void Idle()
     {
         int i = Random.Range(0, 12);
         currentTarget = waypoints[i];
-        agent.destination = currentTarget;
+        agent.destination = currentTarget.transform.position;
     }
 
     public void Eat()
