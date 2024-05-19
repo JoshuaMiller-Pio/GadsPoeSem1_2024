@@ -293,6 +293,7 @@ MonoBehaviour:
   currentCleanliness: {fileID: 258372599}
   currentExecercise: {fileID: 1438920733}
   rhinoPhoto: {fileID: 1259921116}
+  rhnoActions: {fileID: 0}
 --- !u!4 &84052630
 Transform:
   m_ObjectHideFlags: 0
@@ -2988,7 +2989,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7c3522b2fca531747b8f6b5177132db8, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 0a997cb77738082408bef7d35f55f5d3, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1438920731
 GameObject:

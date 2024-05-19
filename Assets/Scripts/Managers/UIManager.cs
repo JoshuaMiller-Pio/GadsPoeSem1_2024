@@ -9,10 +9,11 @@ public class UIManager : MonoBehaviour
     public TMP_Text rhinoName, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise;
 
     public Image rhinoPhoto;
+    public Canvas rhnoActions;
 
     public void UpdateRhinoInfo(Rhino selectedRhino)
     {
-        
+        rhnoActions.gameObject.SetActive(true);
     }
     // Start is called before the first frame update
     void Start()
