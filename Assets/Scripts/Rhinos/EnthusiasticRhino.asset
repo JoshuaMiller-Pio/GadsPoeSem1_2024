@@ -19,3 +19,4 @@ MonoBehaviour:
   maxCleanliness: 100
   maxSleep: 100
   maxActivity: 100
+  maxHealth: 100
