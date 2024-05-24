@@ -58,6 +58,8 @@ public class Rhino : MonoBehaviour
         currentHealth = rhinoScript.maxHealth;
         currentHunger = rhinoScript.maxHunger;
         currentSleep = rhinoScript.maxSleep;
+        int j = Random.Range(0, 12);
+        currentTarget = waypoints[j];
     }
 
     private void OnMouseDown()
@@ -66,9 +68,15 @@ public class Rhino : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    {           
+        Debug.Log(other.gameObject.name);
+        Debug.Log(currentTarget.name);
+
+        
         if (other.gameObject == currentTarget && currentAction == RhinoAction.Idle)
         {
+            Debug.Log("should work");
+
             int i = Random.Range(0, waypoints.Length);
             GameObject newTarget = waypoints[i];
             while (newTarget == currentTarget)
@@ -83,8 +91,7 @@ public class Rhino : MonoBehaviour
 
     public void Idle()
     {
-        int i = Random.Range(0, 12);
-        currentTarget = waypoints[i];
+    
         agent.destination = currentTarget.transform.position;
     }
 
