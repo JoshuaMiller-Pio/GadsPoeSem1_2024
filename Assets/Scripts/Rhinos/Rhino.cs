@@ -46,7 +46,7 @@ public class Rhino : MonoBehaviour
     {
         _UIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = 3f;
+        agent.speed = 1.5f;
         _WaypointManager = GameObject.FindGameObjectWithTag("WaypointManager").GetComponent<WaypointManager>();
         for (int i = 0; i < waypoints.Length; i++)
         {
