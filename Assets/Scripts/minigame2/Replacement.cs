@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Replacement : MonoBehaviour
 {
-    public Transform groundSpawn;
+    public Transform groundSpawn, obstacleSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +22,16 @@ public class Replacement : MonoBehaviour
 
  
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "ground2d")
         {
             other.gameObject.transform.localPosition = groundSpawn.position;
-        }      }
+        }
+        if (other.tag == "obstacle")
+        {
+            other.gameObject.transform.localPosition = obstacleSpawn.localPosition;
+        }
+        
+    }
 }
