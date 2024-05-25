@@ -7,6 +7,18 @@ using UnityEngine.UIElements;
 
 public class GroundMovement : MonoBehaviour
 {
+    private void Update()
+    {
+        transform.position -= new Vector3(Minigame2Manager.speed * Time.deltaTime , 0, 0);
+        if (transform.localPosition.x <= -45.43)
+        {
+            transform.localPosition = new Vector3(-5.55f, transform.position.y, 0);;
+        }
+       
+    }
+
+
+    /*
      public float deltaSpeed;
     private Rigidbody2D _rigcomp;
 
@@ -31,5 +43,5 @@ public class GroundMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         yield return null;
     }
-   
+   */
 }

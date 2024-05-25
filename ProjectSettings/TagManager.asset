@@ -5,12 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - WaypointManager
-  - ground2d
   - 2dReplace
   - Rhino
   - Waypoint
   - UIManager
   - obstacle
+  - 2dDelete
+  - 2dSpawn
+  - ground
   layers:
   - Default
   - TransparentFX
