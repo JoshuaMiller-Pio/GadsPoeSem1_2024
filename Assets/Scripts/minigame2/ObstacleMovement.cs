@@ -1,31 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-    public float deltaSpeed;
-    private Rigidbody2D _rigcomp;
-    // Start is called before the first frame update
-    void Start()
+    public static event Action onSpawnDist;
+    private void Update()
     {
-        _rigcomp = GetComponent<Rigidbody2D>();
-
+        transform.position -= new Vector3(Minigame2Manager.speed * Time.deltaTime, 0, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("2dSpawn"))
+        {
+            Debug.Log("ah");
+            onSpawnDist?.Invoke();
+        }
 
-        StartCoroutine(movement());
+        if (other.CompareTag("2dDelete"))
+        {
+            Destroy(this.gameObject);
+        }
+
+      
     }
+    /*
+      public float deltaSpeed;
+      private Rigidbody2D _rigcomp;
 
-    IEnumerator movement()
-    {       
-        _rigcomp.velocity = new Vector3(-deltaSpeed, 0);
+      // Start is called before the first frame update
+      void Start()
+      {
+          _rigcomp = GetComponent<Rigidbody2D>();
 
-        yield return new WaitForSeconds(0.1f);
-        yield return null;
-    }
+      }
 
+      // Update is called once per frame
+      void Update()
+      {
+
+          StartCoroutine(movement());
+      }
+
+      IEnumerator movement()
+      {
+          _rigcomp.velocity = new Vector3(-deltaSpeed, 0);
+
+          yield return new WaitForSeconds(0.1f);
+          yield return null;
+      }
+
+
+      */
 }
