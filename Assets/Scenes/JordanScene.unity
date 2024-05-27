@@ -324,6 +324,7 @@ MonoBehaviour:
   currentSleep: {fileID: 1871113502}
   currentCleanliness: {fileID: 258372599}
   currentExecercise: {fileID: 1438920733}
+  currentHunger: {fileID: 1122932}
   rhinoPhoto: {fileID: 1259921116}
   rhnoActions: {fileID: 800689089}
 --- !u!4 &84052630
@@ -1160,7 +1161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb34e188a9d6fcc4ea905fdb366a60f4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1548,7 +1549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 40e44e6793787794f9f889d989b0df76, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1624,7 +1625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cde1b3280a64e55429fd0f07174c4f9c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2357,7 +2358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: afe942b777bc1fb4c83f68bdcaa04cd3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3369,7 +3370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dc3f5630674e8df4fbdde907843273d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
