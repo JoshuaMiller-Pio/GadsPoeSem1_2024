@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TakePhoto : MonoBehaviour
 {
+    public static event Action returnScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +28,7 @@ public class TakePhoto : MonoBehaviour
                 {
                     if (hit[i].collider.gameObject.tag == "Rhino")
                     {
-                        Debug.Log(  hit[i].collider.gameObject.name +hit[i].distance);
-                      
+                        returnScene?.Invoke();
                     }
 
                     
