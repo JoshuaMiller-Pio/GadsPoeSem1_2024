@@ -6,11 +6,25 @@ using UnityEngine;
 public class ObstacleMovement : MonoBehaviour
 {
     public static event Action onSpawnDist;
+    private bool move = true;
     private void Update()
     {
+        if (move)
+        {
         transform.position -= new Vector3(Minigame2Manager.speed * Time.deltaTime, 0, 0);
+            
+        }
     }
 
+    private void Start()
+    {
+        JumperPlayerScript.dead += setfalse;
+    }
+
+    void setfalse()
+    {
+        move = false;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("2dSpawn"))

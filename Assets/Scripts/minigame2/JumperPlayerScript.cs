@@ -8,14 +8,14 @@ public class JumperPlayerScript : MonoBehaviour
     public float Jumpforce;
     public bool isGrounded = false;
     private Rigidbody2D _rigcomp;
-
+    public static event Action dead;
     void Start()
     {
         _rigcomp = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && (isGrounded))
+        if (Input.GetButtonDown("Jump") && (isGrounded) )
         {
             _rigcomp.AddForce(Vector2.up*(Jumpforce*100));
             isGrounded = false;
@@ -49,7 +49,7 @@ public class JumperPlayerScript : MonoBehaviour
 
     private void death()
     {
-        Debug.Log("you DEAD");
+        dead?.Invoke();
     }
 
 

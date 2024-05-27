@@ -1,16 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Minigame2Manager : MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    private int output;
-    private float multiplier =0.01f;
+    public TextMeshProUGUI text,endtext;
+    public GameObject canvasDead;
+    private  int output;
+    private float multiplier =0.05f;
     public static float speed =6;
     private float score =0;
     // Start is called before the first frame update
+    private void OnEnable()
+    {
+        JumperPlayerScript.dead += DEAD;
+    }
+
     void Start()
     {
         StartCoroutine(scoreadd());
@@ -36,5 +44,18 @@ public class Minigame2Manager : MonoBehaviour
         }
         yield return null;
 
+    }
+
+    void DEAD()
+    {
+        canvasDead.SetActive(true);
+        StopCoroutine(scoreadd());
+        endtext.text = text.text;
+        
+    }
+
+    public void returnTOPen()
+    {
+        
     }
 }

@@ -7,16 +7,29 @@ using UnityEngine.UIElements;
 
 public class GroundMovement : MonoBehaviour
 {
+    private bool move = true;
     private void Update()
     {
-        transform.position -= new Vector3(Minigame2Manager.speed * Time.deltaTime , 0, 0);
-        if (transform.localPosition.x <= -45.43)
+        if (move)
         {
-            transform.localPosition = new Vector3(-5.55f, transform.position.y, 0);;
+            transform.position -= new Vector3(Minigame2Manager.speed * Time.deltaTime , 0, 0);
+            if (transform.localPosition.x <= -45.43)
+            {
+                transform.localPosition = new Vector3(-5.55f, transform.position.y, 0);;
+            }
         }
+        
        
     }
+    private void Start()
+    {
+        JumperPlayerScript.dead += setfalse;
+    }
 
+    void setfalse()
+    {
+        move = false;
+    }
 
     /*
      public float deltaSpeed;
