@@ -71,11 +71,13 @@ public class Rhino : MonoBehaviour
     private void OnMouseOver()
     {
         UpdateRhinoInfoUI?.Invoke(this);
+
     }
 
     private void OnMouseDown()
     {
         _GameManager.chosenRhino = gameObject;
+
     }
 
     private void OnTriggerEnter(Collider other)
