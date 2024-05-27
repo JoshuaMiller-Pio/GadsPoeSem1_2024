@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Minigame2Manager : MonoBehaviour
 {
@@ -39,7 +40,6 @@ public class Minigame2Manager : MonoBehaviour
             output += 1 ;//(int)score;
             text.text = output.ToString();
             speed = Mathf.Clamp(speed + multiplier, 6, 20);
-            Debug.Log(speed);
             
         }
         yield return null;
@@ -56,6 +56,8 @@ public class Minigame2Manager : MonoBehaviour
 
     public void returnTOPen()
     {
-        
+        SceneManager.LoadScene(1);
+        GameManager.Instance.currentGold += (int)Math.Floor((double)output/75);
+
     }
 }
