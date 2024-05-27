@@ -27,8 +27,8 @@ public class Minigame1Manager : MonoBehaviour
 
     public void SceneReturn()
     {
-        GameManager.Instance.currentGold += 15;
-        //TODO return to scene 2
+        GameManager.Instance.currentGold += 30;
+        SceneManager.LoadScene(1);
 
     }
     // Update is called once per frame
