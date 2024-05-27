@@ -10,16 +10,16 @@ using UnityEngine.TextCore.Text;
 public class UIManager : MonoBehaviour
 {
     
-    public TMP_Text rhinoName, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
+    public TMP_Text rhinoName, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
 
     public Image rhinoPhoto;
     public Canvas rhnoActions;
-    
+    public GameManager _GameManager;
    
     // Start is called before the first frame update
     void Start()
     {
-        
+        _GameManager = GameManager.Instance;
     }
 
     private void OnEnable()
@@ -51,6 +51,6 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentGold.text = "= " + _GameManager.currentGold.ToString();
     }
 }
