@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class Rhino : MonoBehaviour
 {
+    public GameManager _GameManager;
     public UIManager _UIManager;
     public NavMeshAgent agent;
     public float currentHappiness, currentCleanliness, currentHealth, currentSleep, currentHunger, currentActivity;
@@ -18,6 +19,7 @@ public class Rhino : MonoBehaviour
     public RhinoScriptable rhinoScript;
     public RhinoAction currentAction, previousAction;
     public WaypointManager _WaypointManager;
+    public static event Action<Rhino> UpdateRhinoInfoUI;
     
     public enum RhinoAction
     {
@@ -44,6 +46,7 @@ public class Rhino : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _GameManager = GameManager.Instance;
         _UIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.speed = 1.5f;
@@ -58,13 +61,20 @@ public class Rhino : MonoBehaviour
         currentHealth = rhinoScript.maxHealth;
         currentHunger = rhinoScript.maxHunger;
         currentSleep = rhinoScript.maxSleep;
+        currentActivity = rhinoScript.maxActivity;
         int j = Random.Range(0, 12);
         currentTarget = waypoints[j];
+        StartCoroutine("StatDegrade");
+    }
+
+    private void OnMouseOver()
+    {
+        UpdateRhinoInfoUI?.Invoke(this);
     }
 
     private void OnMouseDown()
     {
-        _UIManager.UpdateRhinoInfo(this);
+        _GameManager.chosenRhino = gameObject;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -89,6 +99,25 @@ public class Rhino : MonoBehaviour
         }
     }
 
+    IEnumerator StatDegrade()
+    {
+        while (true)
+        {
+            int i = Random.Range(0, 10);
+            int p = Random.Range(0, 10);
+            int o = Random.Range(0, 10);
+            int l = Random.Range(0, 10);
+            int m = Random.Range(0, 10);
+            int t = Random.Range(45, 120);
+            currentHealth -= i;
+            currentCleanliness -= p;
+            currentActivity -= o;
+            currentSleep -= l;
+            currentHunger -= m;
+            yield return new WaitForSeconds(t);
+        }
+        
+    }
     public void Idle()
     {
     
@@ -152,6 +181,9 @@ public class Rhino : MonoBehaviour
                 break;
             default:
                 break;
-        }  
+        }
+
+        currentHappiness = (currentCleanliness + currentHappiness + currentHealth + currentActivity + currentSleep +
+                            currentHunger) / 6;
     }
 }
