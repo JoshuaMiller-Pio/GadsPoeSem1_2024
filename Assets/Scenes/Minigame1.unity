@@ -13504,6 +13504,9 @@ MonoBehaviour:
   animals:
   - {fileID: 4578529276261259225, guid: 7327f31f7504c6447b4d45dc1139f0a4, type: 3}
   - {fileID: 273871903057601219, guid: 930ec5f5116117c4185d7d9d2068fd4d, type: 3}
+  - {fileID: 4785091661457495590, guid: 4bb1a1c00f1da604284f8abaa92fe1fe, type: 3}
+  - {fileID: 793499373885280577, guid: 0e7cfa3ab31cd2a4c9a9907ec3bae8b2, type: 3}
+  - {fileID: 586979156869877099, guid: 5fe810730630d754bac5dce7db926003, type: 3}
 --- !u!4 &1026648840
 Transform:
   m_ObjectHideFlags: 0
