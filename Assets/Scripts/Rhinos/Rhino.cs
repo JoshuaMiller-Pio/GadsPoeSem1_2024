@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -57,11 +58,11 @@ public class Rhino : MonoBehaviour
         }
         ChangeAction(RhinoAction.Idle);
         currentHappiness = rhinoScript.maxHappiness;
-        currentCleanliness = rhinoScript.maxCleanliness;
-        currentHealth = rhinoScript.maxHealth;
-        currentHunger = rhinoScript.maxHunger;
-        currentSleep = rhinoScript.maxSleep;
-        currentActivity = rhinoScript.maxActivity;
+        currentCleanliness = Random.Range(35, 95);
+        currentHealth = Random.Range(35, 95);
+        currentHunger = Random.Range(35, 95);
+        currentSleep = Random.Range(35, 95);
+        currentActivity = Random.Range(35, 95);
         int j = Random.Range(0, 12);
         currentTarget = waypoints[j];
         StartCoroutine("StatDegrade");
@@ -96,6 +97,21 @@ public class Rhino : MonoBehaviour
             }
             currentTarget = newTarget;
             agent.destination = currentTarget.transform.position;
+        }
+        
+        if (other.gameObject == currentTarget && currentAction == RhinoAction.Eat)
+        {
+            StartCoroutine(waitAtLocation(10));
+        }
+        
+        if (other.gameObject == currentTarget && currentAction == RhinoAction.Clean)
+        {
+            StartCoroutine(waitAtLocation(20));
+        }
+        
+        if (other.gameObject == currentTarget && currentAction == RhinoAction.Sleep)
+        {
+            StartCoroutine(waitAtLocation(60));
         }
     }
 
@@ -158,7 +174,14 @@ public class Rhino : MonoBehaviour
             currentSleep = rhinoScript.maxHunger;
         }
     }
+
     
+    IEnumerator waitAtLocation(int waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ChangeAction(RhinoAction.Idle);
+        StopCoroutine("waitAtLocation");
+    }
     // Update is called once per frame
     void Update()
     {
