@@ -25,11 +25,13 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         Rhino.UpdateRhinoInfoUI += UpdateRhinoInfo;
+        Rhino.DisplayRhinoOptions += ShowRhinoOptions;
     }
 
     private void OnDisable()
     {
         Rhino.UpdateRhinoInfoUI -= UpdateRhinoInfo; 
+        Rhino.DisplayRhinoOptions -= ShowRhinoOptions;
     }
 
     public void UpdateRhinoInfo(Rhino chosenRhino)
