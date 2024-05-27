@@ -104,19 +104,19 @@ public class Rhino : MonoBehaviour
         if (other.gameObject == currentTarget && currentAction == RhinoAction.Eat)
         {
             StartCoroutine(waitAtLocation(10));
-            currentHunger = currentHunger + 10;
+            //currentHunger = currentHunger + 10;
         }
         
         if (other.gameObject == currentTarget && currentAction == RhinoAction.Clean)
         {
             StartCoroutine(waitAtLocation(20));
-            currentCleanliness = currentCleanliness + 30;
+            //currentCleanliness = currentCleanliness + 30;
         }
         
         if (other.gameObject == currentTarget && currentAction == RhinoAction.Sleep)
         {
             StartCoroutine(waitAtLocation(60));
-            currentSleep= currentSleep + 50;
+            //currentSleep= currentSleep + 50;
         }
     }
 

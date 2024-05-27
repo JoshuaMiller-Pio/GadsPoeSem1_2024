@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -19,6 +20,7 @@ public class GameManager : Singleton<GameManager>
         chosenRhino.currentActivity += 30;
         chosenRhino.currentHealth -= 10;
         chosenRhino.currentHunger -= 10;
+        SceneManager.LoadScene(3);
     }
     
     public void PlayRhinoSafari()
@@ -26,6 +28,7 @@ public class GameManager : Singleton<GameManager>
         chosenRhino.currentActivity += 30;
         chosenRhino.currentHunger -= 10;
         chosenRhino.currentCleanliness -= 10;
+        SceneManager.LoadScene(2);
     }
 
     public void Eat()
