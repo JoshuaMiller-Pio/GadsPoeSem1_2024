@@ -21,7 +21,7 @@ public class Rhino : MonoBehaviour
     public RhinoAction currentAction, previousAction;
     public WaypointManager _WaypointManager;
     public static event Action<Rhino> UpdateRhinoInfoUI;
-    
+    public static event Action<Rhino> DisplayRhinoOptions;
     public enum RhinoAction
     {
         Idle,
@@ -76,8 +76,8 @@ public class Rhino : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _GameManager.chosenRhino = gameObject;
-
+        _GameManager.chosenRhino = this; 
+         DisplayRhinoOptions?.Invoke(this);
     }
 
     private void OnTriggerEnter(Collider other)
