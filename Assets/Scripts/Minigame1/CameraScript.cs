@@ -11,8 +11,8 @@ public class CameraScript : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+       Cursor.visible = false;
     }
 
     private void Update()

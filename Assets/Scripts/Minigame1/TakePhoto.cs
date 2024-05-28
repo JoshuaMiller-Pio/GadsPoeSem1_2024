@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class TakePhoto : MonoBehaviour
 {
-    public static event Action returnScene;
+    public static event Action snapwin;
+    public static event Action snapNothing;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +29,21 @@ public class TakePhoto : MonoBehaviour
                 {
                     if (hit[i].collider.gameObject.tag == "Rhino")
                     {
-                        returnScene?.Invoke();
-                    }
+                        snapwin?.Invoke();
 
+                    }
+                    else
+                    {
+                        snapNothing?.Invoke();
+                    }
+                
+                    
                     
                 }
             }
         }
     }
+
+ 
 }
+
