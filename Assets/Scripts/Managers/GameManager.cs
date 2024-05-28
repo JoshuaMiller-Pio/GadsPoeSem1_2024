@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
     public GameObject maleRhinoPrefab, femaleRhinoPrefab;
     public Rhino chosenRhino { get; set; }
-    public List<GameObject> rhinos = new List<GameObject>(11);
+    public List<GameObject> rhinos = new List<GameObject>();
     public int currentGold, foodCost = 10, medsCost = 20, cleanCost = 20;
     private PrefabManager _prefabManager;
     private WaypointManager _waypointManager;
@@ -115,6 +115,19 @@ public class GameManager : Singleton<GameManager>
         }
         spawnCheck();
         yield return null;
+    }
+    public void DestroyRhino()
+    {
+        foreach (GameObject rhino in rhinos)
+        {
+            if (rhino == chosenRhino.gameObject)
+            {
+                rhinos.Remove(rhino);
+                Destroy(rhino);
+                rhinos[1].SetActive(true);
+            }
+        }
+
     }
     public void PlayGame()
     {

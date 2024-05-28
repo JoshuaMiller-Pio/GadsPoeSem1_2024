@@ -29,7 +29,15 @@ public class ButtonManager : MonoBehaviour
         _gameManager.chosenRhino = _gameManager.rhinos[1].GetComponent<Rhino>();
         _gameManager.chosenRhino.SelectedRhino();
     }
-    
+
+    public void DestroyRhino()
+    {
+        if (_gameManager.chosenRhino.currentHappiness >= 90)
+        {
+            _gameManager.DestroyRhino();
+        }
+        
+    }
     public void PlayRhinoSafari()
     {
        _gameManager.PlayRhinoSafari();
