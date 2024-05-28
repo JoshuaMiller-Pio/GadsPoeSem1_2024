@@ -18,12 +18,13 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
         currentGold = 30;
        // maleRhinoPrefab = GameObject.FindGameObjectWithTag("MaleRhino");
         //femaleRhinoPrefab = GameObject.FindGameObjectWithTag("FemaleRhino");
+
         if (SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene())
         {
+
             if (rhinos.Count == 0)
             {
                 _prefabManager = GameObject.FindGameObjectWithTag("PrefabManager").GetComponent<PrefabManager>();
@@ -31,12 +32,27 @@ public class GameManager : Singleton<GameManager>
                 femaleRhinoPrefab = _prefabManager.femalePrefab;
                 _waypointManager = GameObject.FindGameObjectWithTag("WaypointManager").GetComponent<WaypointManager>();
                 CreateRhinos(); 
+                Debug.Log("ahFuck");
+            }
+            else
+            {
+                spawnRhinos();
+                Debug.Log("FUCKKKSSSSSS");
             }
             
         }
        
     }
 
+    public void spawnRhinos()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            int p = Random.Range(3, 10);
+
+           Instantiate(rhinos[i], _waypointManager.waypoints[p].transform.position, quaternion.identity); 
+        }
+    }
     public void PlayRhinoRun()
     {
         chosenRhino.currentActivity += 30;
