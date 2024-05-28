@@ -11,11 +11,10 @@ public class Minigame1Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TakePhoto.returnScene += SceneReturn;
         int randomPoint;
         int randomAnimal;
-        while(animals.Count > 0){
-            
+        while(animals.Count > 0)
+        {
             randomPoint = Random.Range(0, spawnPoints.Count);
             randomAnimal = Random.Range(0, animals.Count );
             Instantiate(animals[randomAnimal],spawnPoints[randomPoint].transform.position, Quaternion.identity );
@@ -27,9 +26,9 @@ public class Minigame1Manager : MonoBehaviour
 
     public void SceneReturn()
     {
+        Debug.Log("ah");
         GameManager.Instance.currentGold += 30;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+       
         SceneManager.LoadScene(1);
         
 

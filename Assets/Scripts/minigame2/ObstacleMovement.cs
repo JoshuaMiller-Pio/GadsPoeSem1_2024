@@ -11,7 +11,7 @@ public class ObstacleMovement : MonoBehaviour
     {
         if (move)
         {
-        transform.position -= new Vector3(Minigame2Manager.speed * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(Minigame2Manager.speed * Time.deltaTime, 0, 0);
             
         }
     }

@@ -8,6 +8,7 @@ public class JumperPlayerScript : MonoBehaviour
     public float Jumpforce;
     public bool isGrounded = false;
     private Rigidbody2D _rigcomp;
+    public AudioSource jump;
     public static event Action dead;
     void Start()
     {
@@ -19,6 +20,7 @@ public class JumperPlayerScript : MonoBehaviour
         {
             _rigcomp.AddForce(Vector2.up*(Jumpforce*100));
             isGrounded = false;
+            jump.Play();
         }
 
     }
