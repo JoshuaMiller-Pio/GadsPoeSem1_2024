@@ -70,8 +70,10 @@ public class Rhino : MonoBehaviour
 
     private void OnMouseOver()
     {
+        Debug.Log(this.gameObject.name);
+        _GameManager.chosenRhino = this;
         UpdateRhinoInfoUI?.Invoke(this);
-
+        
     }
 
     private void OnMouseDown()
@@ -82,8 +84,7 @@ public class Rhino : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {           
-        Debug.Log(other.gameObject.name);
-        Debug.Log(currentTarget.name);
+        
 
         
         if (other.gameObject == currentTarget && currentAction == RhinoAction.Idle)

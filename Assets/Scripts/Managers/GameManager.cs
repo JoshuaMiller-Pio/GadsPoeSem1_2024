@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Rhino chosenRhino;
+    public Rhino chosenRhino { get; set; }
    
     public int currentGold, foodCost = 10, medsCost = 20, cleanCost = 20;
     // Start is called before the first frame update
@@ -22,7 +22,16 @@ public class GameManager : Singleton<GameManager>
         chosenRhino.currentHunger -= 10;
         SceneManager.LoadScene(3);
     }
-    
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
     public void PlayRhinoSafari()
     {
         chosenRhino.currentActivity += 30;

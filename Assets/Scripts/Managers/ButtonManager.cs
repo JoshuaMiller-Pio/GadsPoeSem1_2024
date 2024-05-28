@@ -23,6 +23,15 @@ public class ButtonManager : MonoBehaviour
        _gameManager.PlayRhinoSafari();
     }
 
+    public void PlayGame()
+    {
+        _gameManager.PlayGame();
+    }
+
+    public void Quit()
+    {
+        _gameManager.Quit();
+    }
     public void Eat()
     {
         _gameManager.Eat();
