@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5102602080294171487}
   - component: {fileID: 5866871673689680281}
   - component: {fileID: 4839452945484362593}
+  - component: {fileID: 5902984591609527064}
   m_Layer: 0
   m_Name: FemaleRhinoNew
-  m_TagString: Rhino
+  m_TagString: FemaleRhino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6d8c30f5f402744861b4f9c25f4d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _GameManager: {fileID: 0}
+  _UIManager: {fileID: 0}
   agent: {fileID: 0}
   currentHappiness: 0
   currentCleanliness: 0
@@ -98,23 +101,51 @@ MonoBehaviour:
   currentHunger: 0
   currentActivity: 0
   waypoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  currentTarget: {x: 0, y: 0, z: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentTarget: {fileID: 0}
+  currentTargetLocation: {x: 0, y: 0, z: 0}
   rhinoScript: {fileID: 11400000, guid: 2e8fc3a47ae4b5d44be9baa1b86f1216, type: 2}
   currentAction: 0
   previousAction: 0
   _WaypointManager: {fileID: 0}
+--- !u!54 &5902984591609527064
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799904526714814675}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &5451177797629765623
 PrefabInstance:
   m_ObjectHideFlags: 0

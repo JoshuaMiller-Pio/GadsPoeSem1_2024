@@ -13,6 +13,9 @@ TagManager:
   - 2dDelete
   - 2dSpawn
   - ground
+  - MaleRhino
+  - FemaleRhino
+  - PrefabManager
   layers:
   - Default
   - TransparentFX
