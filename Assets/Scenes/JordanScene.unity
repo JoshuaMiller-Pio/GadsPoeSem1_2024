@@ -1871,7 +1871,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &800689090
 RectTransform:
@@ -2632,7 +2632,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &1056813479
 RectTransform:
@@ -6324,7 +6324,7 @@ PrefabInstance:
       objectReference: {fileID: 1131459276}
     - target: {fileID: 5102602080294171487, guid: 020eb217edc737d41bed650855d2abe0, type: 3}
       propertyPath: m_Size.x
-      value: 0.35175133
+      value: 0.5929527
       objectReference: {fileID: 0}
     - target: {fileID: 5102602080294171487, guid: 020eb217edc737d41bed650855d2abe0, type: 3}
       propertyPath: m_Size.z
@@ -6332,7 +6332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5102602080294171487, guid: 020eb217edc737d41bed650855d2abe0, type: 3}
       propertyPath: m_Center.x
-      value: 0.0048208237
+      value: -0.025148392
       objectReference: {fileID: 0}
     - target: {fileID: 5102602080294171487, guid: 020eb217edc737d41bed650855d2abe0, type: 3}
       propertyPath: m_Center.z
