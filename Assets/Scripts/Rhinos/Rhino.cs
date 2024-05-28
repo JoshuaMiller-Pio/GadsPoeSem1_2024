@@ -99,7 +99,6 @@ public class Rhino : MonoBehaviour
         
         if (other.gameObject == currentTarget && currentAction == RhinoAction.Idle)
         {
-            Debug.Log("should work");
 
             int i = Random.Range(0, waypoints.Length);
             GameObject newTarget = waypoints[i];

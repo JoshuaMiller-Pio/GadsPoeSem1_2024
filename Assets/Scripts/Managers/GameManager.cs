@@ -29,7 +29,6 @@ public class GameManager : Singleton<GameManager>
 
     public void spawnCheck()
     {
-        Debug.Log(SceneManager.GetSceneByBuildIndex(1).name +"" + SceneManager.GetActiveScene().name);
         if (SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene())
         {
 

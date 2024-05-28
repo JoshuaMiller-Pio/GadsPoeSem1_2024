@@ -26,7 +26,6 @@ public class Minigame1Manager : MonoBehaviour
 
     public void SceneReturn()
     {
-        Debug.Log("ah");
         GameManager.Instance.currentGold += 30;
        
         GameManager.Instance.returnToPen();
