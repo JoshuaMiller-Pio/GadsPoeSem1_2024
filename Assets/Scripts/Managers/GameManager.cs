@@ -22,6 +22,14 @@ public class GameManager : Singleton<GameManager>
        // maleRhinoPrefab = GameObject.FindGameObjectWithTag("MaleRhino");
         //femaleRhinoPrefab = GameObject.FindGameObjectWithTag("FemaleRhino");
 
+
+        spawnCheck();
+    }
+
+
+    public void spawnCheck()
+    {
+        Debug.Log(SceneManager.GetSceneByBuildIndex(1).name +"" + SceneManager.GetActiveScene().name);
         if (SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene())
         {
 
@@ -32,25 +40,19 @@ public class GameManager : Singleton<GameManager>
                 femaleRhinoPrefab = _prefabManager.femalePrefab;
                 _waypointManager = GameObject.FindGameObjectWithTag("WaypointManager").GetComponent<WaypointManager>();
                 CreateRhinos(); 
-                Debug.Log("ahFuck");
             }
             else
             {
                 spawnRhinos();
-                Debug.Log("FUCKKKSSSSSS");
             }
             
         }
-       
     }
-
     public void spawnRhinos()
     {
         for (int i = 0; i < 2; i++)
         {
-            int p = Random.Range(3, 10);
-
-           Instantiate(rhinos[i], _waypointManager.waypoints[p].transform.position, quaternion.identity); 
+            rhinos[i].SetActive(true);
         }
     }
     public void PlayRhinoRun()
@@ -58,6 +60,10 @@ public class GameManager : Singleton<GameManager>
         chosenRhino.currentActivity += 30;
         chosenRhino.currentHealth -= 10;
         chosenRhino.currentHunger -= 10;
+        for (int i = 0; i < rhinos.Count; i++)
+        {
+            rhinos[i].SetActive(false);
+        }
         SceneManager.LoadScene(3);
     }
 
@@ -92,9 +98,28 @@ public class GameManager : Singleton<GameManager>
             
         }
     }
+
+    public void returnToPen()
+    {
+        SceneManager.LoadScene(1);
+        spawnCheck();
+        StartCoroutine(waitForScene());
+
+    }
+
+    IEnumerator waitForScene()
+    {
+        while (SceneManager.GetSceneByBuildIndex(1) != SceneManager.GetActiveScene())
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        spawnCheck();
+        yield return null;
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
+        
     }
 
     public void Quit()
@@ -106,6 +131,10 @@ public class GameManager : Singleton<GameManager>
         chosenRhino.currentActivity += 30;
         chosenRhino.currentHunger -= 10;
         chosenRhino.currentCleanliness -= 10;
+        for (int i = 0; i < rhinos.Count; i++)
+        {
+            rhinos[i].SetActive(false);
+        }
         SceneManager.LoadScene(2);
     }
 

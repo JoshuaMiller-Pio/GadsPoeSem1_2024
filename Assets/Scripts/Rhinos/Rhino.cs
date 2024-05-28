@@ -31,6 +31,7 @@ public class Rhino : MonoBehaviour
         Sleep
     }
 
+ 
     public void ChangeAction(RhinoAction desiredAction)
     {
         if (currentAction == desiredAction)
@@ -45,8 +46,10 @@ public class Rhino : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        DontDestroyOnLoad(this);
+
         _GameManager = GameManager.Instance;
         _UIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -142,8 +145,19 @@ public class Rhino : MonoBehaviour
     }
     public void Idle()
     {
-    
-        agent.destination = currentTarget.transform.position;
+      
+        try
+        {
+            agent.destination = currentTarget.transform.position;
+        }
+        catch
+        { 
+            int j = Random.Range(0, 12);
+            currentTarget = waypoints[j];
+            agent.destination = currentTarget.transform.position;
+
+        }
+        
     }
 
     public void Eat()

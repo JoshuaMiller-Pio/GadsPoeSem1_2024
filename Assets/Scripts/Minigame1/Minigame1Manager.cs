@@ -29,8 +29,7 @@ public class Minigame1Manager : MonoBehaviour
         Debug.Log("ah");
         GameManager.Instance.currentGold += 30;
        
-        SceneManager.LoadScene(1);
-        
+        GameManager.Instance.returnToPen();
 
     }
     // Update is called once per frame
