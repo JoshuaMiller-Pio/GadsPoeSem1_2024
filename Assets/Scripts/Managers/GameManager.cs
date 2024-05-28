@@ -52,21 +52,23 @@ public class GameManager : Singleton<GameManager>
             int i = Random.Range(0, 2);
             if (i == 0)
             {
-                GameObject newRhino = maleRhinoPrefab;
-                rhinos.Add(newRhino);
                 int p = Random.Range(3, 10);
-                Instantiate(newRhino, _waypointManager.waypoints[p].transform.position, quaternion.identity);
+
+                GameObject newRhino =Instantiate(maleRhinoPrefab, _waypointManager.waypoints[p].transform.position, quaternion.identity); ;
+                rhinos.Add(newRhino);
+                
             }
             else
             {
-                GameObject newRhino = femaleRhinoPrefab;
-                rhinos.Add(newRhino);
                 int p = Random.Range(3, 10);
-                Instantiate(newRhino, _waypointManager.waypoints[p].transform.position, quaternion.identity);
+
+                GameObject newRhino =Instantiate(femaleRhinoPrefab, _waypointManager.waypoints[p].transform.position, quaternion.identity);
+                rhinos.Add(newRhino);
+                
             }
         }
 
-        for (int i = 3; i < 9; i++)
+        for (int i = 1; i < 9; i++)
         {
             
                 rhinos[i].gameObject.SetActive(false);
