@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
     {
         for (int t = 0; t < 10; t++)
         {
-            int i = Random.Range(1, 3);
+            int i = Random.Range(0, 2);
             if (i == 0)
             {
                 GameObject newRhino = maleRhinoPrefab;
@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
             }
             else
             {
-                GameObject newRhino = maleRhinoPrefab;
+                GameObject newRhino = femaleRhinoPrefab;
                 rhinos.Add(newRhino);
                 int p = Random.Range(3, 10);
                 Instantiate(newRhino, _waypointManager.waypoints[p].transform.position, quaternion.identity);
