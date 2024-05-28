@@ -17,6 +17,18 @@ public class ButtonManager : MonoBehaviour
     {
         _gameManager.PlayRhinoRun();
     }
+
+    public void SelectRhino0()
+    {
+       _gameManager.chosenRhino = _gameManager.rhinos[0].GetComponent<Rhino>();
+       _gameManager.chosenRhino.SelectedRhino();
+    }
+    
+    public void SelectRhino1()
+    {
+        _gameManager.chosenRhino = _gameManager.rhinos[1].GetComponent<Rhino>();
+        _gameManager.chosenRhino.SelectedRhino();
+    }
     
     public void PlayRhinoSafari()
     {

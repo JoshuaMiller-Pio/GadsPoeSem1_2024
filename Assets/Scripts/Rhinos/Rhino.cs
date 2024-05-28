@@ -53,7 +53,7 @@ public class Rhino : MonoBehaviour
         _GameManager = GameManager.Instance;
         _UIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = 1.5f;
+        agent.speed = 1f;
         _WaypointManager = GameObject.FindGameObjectWithTag("WaypointManager").GetComponent<WaypointManager>();
         for (int i = 0; i < waypoints.Length; i++)
         {
@@ -71,20 +71,27 @@ public class Rhino : MonoBehaviour
         StartCoroutine("StatDegrade");
     }
 
+    /*
     private void OnMouseOver()
     {
         Debug.Log(this.gameObject.name);
-        _GameManager.chosenRhino = this;
-        UpdateRhinoInfoUI?.Invoke(this);
+        
         
     }
 
+    
     private void OnMouseDown()
     {
         _GameManager.chosenRhino = this; 
-         DisplayRhinoOptions?.Invoke(this);
+         
     }
-
+*/
+    public void SelectedRhino()
+    {
+        //_GameManager.chosenRhino = this;
+        UpdateRhinoInfoUI?.Invoke(this);
+        DisplayRhinoOptions?.Invoke(this);
+    }
     private void OnTriggerEnter(Collider other)
     {           
         

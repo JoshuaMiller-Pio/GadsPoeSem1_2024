@@ -90,7 +90,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        for (int i = 1; i < 9; i++)
+        for (int i = 2; i < 10; i++)
         {
             
                 rhinos[i].gameObject.SetActive(false);
