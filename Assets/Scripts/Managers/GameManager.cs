@@ -137,6 +137,10 @@ public class GameManager : Singleton<GameManager>
         
     }
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void Quit()
     {
         Application.Quit();

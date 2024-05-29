@@ -26,7 +26,11 @@ public class ButtonManager : MonoBehaviour
        _gameManager.chosenRhino = _gameManager.rhinos[0].GetComponent<Rhino>();
        _gameManager.chosenRhino.SelectedRhino();
     }
-    
+
+    public void Pause()
+    {
+        _UIManager.ActivatePauseMenu();
+    }
     public void SelectRhino1()
     {
         _gameManager.chosenRhino = _gameManager.rhinos[1].GetComponent<Rhino>();
@@ -56,6 +60,10 @@ public class ButtonManager : MonoBehaviour
         _gameManager.PlayGame();
     }
 
+    public void LoadMainMenu()
+    {
+        _gameManager.LoadMainMenu();
+    }
     public void Quit()
     {
         _gameManager.Quit();
