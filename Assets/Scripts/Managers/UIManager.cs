@@ -10,8 +10,8 @@ using UnityEngine.TextCore.Text;
 public class UIManager : MonoBehaviour
 {
     
-    public TMP_Text rhinoName, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
-
+    public TMP_Text rhinoName, rhinosSaved, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
+    public GameObject noGoldPanel, notRecoveredEnoughPanel;
     public Image rhinoPhoto;
     public Canvas rhnoActions;
     public GameManager _GameManager;
@@ -34,6 +34,20 @@ public class UIManager : MonoBehaviour
         Rhino.DisplayRhinoOptions -= ShowRhinoOptions;
     }
 
+    public void ActivateNoGoldPanel()
+    {
+        noGoldPanel.SetActive(true);
+    }
+    
+    public void ActivateNotRecoveredPanel()
+    {
+        notRecoveredEnoughPanel.SetActive(true);
+    }
+    
+    public void CloseeNotRecoveredPanel()
+    {
+        notRecoveredEnoughPanel.SetActive(false);
+    }
     public void UpdateRhinoInfo(Rhino chosenRhino)
     {
         currentHealth.text = chosenRhino.currentHealth.ToString() + "/100";
@@ -48,9 +62,15 @@ public class UIManager : MonoBehaviour
     {
         rhnoActions.gameObject.SetActive(true);
     }
+
+    public void CloseRhinoActions()
+    {
+        rhnoActions.gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
+        rhinosSaved.text = "Rhinos Saved: " + _GameManager.rhinosSaved;
         currentGold.text = "= " + _GameManager.currentGold.ToString();
     }
 }
