@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text rhinoName, rhinosSaved, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
     public GameObject noGoldPanel, notRecoveredEnoughPanel;
     public Image rhinoPhoto;
-    public Canvas rhnoActions;
+    public Canvas rhnoActions, pauseMenu;
     public GameManager _GameManager;
    
     // Start is called before the first frame update
@@ -38,7 +38,11 @@ public class UIManager : MonoBehaviour
     {
         noGoldPanel.SetActive(true);
     }
-    
+
+    public void ActivatePauseMenu()
+    {
+        pauseMenu.gameObject.SetActive(true);
+    }
     public void ActivateNotRecoveredPanel()
     {
         notRecoveredEnoughPanel.SetActive(true);
