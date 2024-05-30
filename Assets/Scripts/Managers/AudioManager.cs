@@ -6,7 +6,7 @@ public class AudioManager : Singleton<AudioManager>
 {
     
     public  AudioSource Source;
-    public  AudioClip money, eat, button;
+    public  AudioClip money, eat,button;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +23,13 @@ public class AudioManager : Singleton<AudioManager>
         Source.clip = eat;
         Source.Play();
     }
-    public  void playButton()
-       {
-           Source.clip = eat;
-           Source.Play();
-       }
+    public  void playbutton()
+    {
+        Source.clip = button;
+        Source.Play();
+    }
+    
+
     
     
     
