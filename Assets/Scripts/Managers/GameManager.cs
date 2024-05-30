@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     private WaypointManager _waypointManager;
     private UIManager _uiManager;
     public int  maxSpawnedRhinos = 2;
+
+    private bool spawned = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +26,14 @@ public class GameManager : Singleton<GameManager>
         //femaleRhinoPrefab = GameObject.FindGameObjectWithTag("FemaleRhino");
 
 
-        spawnCheck();
     }
 
 
     public void spawnCheck()
     {
-        if (SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene())
+        if (SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene() && spawned == false)
         {
+            spawned = true;
             _uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
             if (rhinos.Count == 0)
             {
@@ -64,6 +66,8 @@ public class GameManager : Singleton<GameManager>
         {
             rhinos[i].SetActive(false);
         }
+
+        spawned = false;
         SceneManager.LoadScene(3);
     }
 
@@ -102,20 +106,11 @@ public class GameManager : Singleton<GameManager>
     public void returnToPen()
     {
         SceneManager.LoadScene(1);
-        spawnCheck();
-        StartCoroutine(waitForScene());
+        StartCoroutine(wait());
         
     }
 
-    IEnumerator waitForScene()
-    {
-        while (SceneManager.GetSceneByBuildIndex(1) != SceneManager.GetActiveScene())
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-        spawnCheck();
-        yield return null;
-    }
+ 
     public void DestroyRhino()
     {
         
@@ -134,6 +129,8 @@ public class GameManager : Singleton<GameManager>
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
+        StartCoroutine(wait());
+
         
     }
 
@@ -152,12 +149,22 @@ public class GameManager : Singleton<GameManager>
         chosenRhino.currentCleanliness -= 10;
         for (int i = 0; i < rhinos.Count; i++)
         {
-            rhinos[i].SetActive(false);
+            rhinos[i].gameObject.SetActive(false);
+            Debug.Log(rhinos[i].name);
         }
         _uiManager.CloseRhinoActions();
+        spawned = false;
         SceneManager.LoadScene(2);
+
     }
 
+    IEnumerator wait()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        spawnCheck();
+        yield return null;
+    }
+  
     public void Eat()
     {
         if (currentGold < 10)
@@ -212,5 +219,6 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         
+
     }
 }

@@ -169,13 +169,25 @@ public class Rhino : MonoBehaviour
     public void Eat()
     {
         agent.destination = waypoints[2].transform.position;
-        
+        StartCoroutine(eatNoise());
         if (currentHunger > rhinoScript.maxHunger)
         {
             currentHunger = rhinoScript.maxHunger;
         }
     }
 
+    IEnumerator eatNoise()
+    {
+        while (agent.remainingDistance <= 0.5f)
+        {
+
+
+            yield return new WaitForSecondsRealtime(Random.Range(1, 5));
+            AudioManager.Instance.playEat();
+            
+        }
+       
+    }
     public void Clean()
     {
         agent.destination = waypoints[3].transform.position;

@@ -13,7 +13,6 @@ public class ButtonManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _UIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     public void PlayRhinoRun()

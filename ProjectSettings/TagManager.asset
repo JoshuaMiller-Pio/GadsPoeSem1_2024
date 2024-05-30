@@ -16,6 +16,7 @@ TagManager:
   - MaleRhino
   - FemaleRhino
   - PrefabManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX
