@@ -56,8 +56,9 @@ public class Minigame2Manager : MonoBehaviour
 
     public void returnTOPen()
     {
-        SceneManager.LoadScene(1);
+       
         GameManager.Instance.currentGold += (int)Math.Floor((double)output/75);
+        GameManager.Instance.returnToPen();
 
     }
 }
