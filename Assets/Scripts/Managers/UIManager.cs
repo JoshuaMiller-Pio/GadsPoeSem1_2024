@@ -10,10 +10,10 @@ using UnityEngine.TextCore.Text;
 public class UIManager : MonoBehaviour
 {
     
-    public TMP_Text rhinoName, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
-
+    public TMP_Text rhinoName, rhinosSaved, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
+    public GameObject noGoldPanel, notRecoveredEnoughPanel;
     public Image rhinoPhoto;
-    public Canvas rhnoActions;
+    public Canvas rhnoActions, pauseMenu;
     public GameManager _GameManager;
    
     // Start is called before the first frame update
@@ -34,6 +34,24 @@ public class UIManager : MonoBehaviour
         Rhino.DisplayRhinoOptions -= ShowRhinoOptions;
     }
 
+    public void ActivateNoGoldPanel()
+    {
+        noGoldPanel.SetActive(true);
+    }
+
+    public void ActivatePauseMenu()
+    {
+        pauseMenu.gameObject.SetActive(true);
+    }
+    public void ActivateNotRecoveredPanel()
+    {
+        notRecoveredEnoughPanel.SetActive(true);
+    }
+    
+    public void CloseeNotRecoveredPanel()
+    {
+        notRecoveredEnoughPanel.SetActive(false);
+    }
     public void UpdateRhinoInfo(Rhino chosenRhino)
     {
         currentHealth.text = chosenRhino.currentHealth.ToString() + "/100";
@@ -48,9 +66,15 @@ public class UIManager : MonoBehaviour
     {
         rhnoActions.gameObject.SetActive(true);
     }
+
+    public void CloseRhinoActions()
+    {
+        rhnoActions.gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
+        rhinosSaved.text = "Rhinos Saved: " + _GameManager.rhinosSaved;
         currentGold.text = "= " + _GameManager.currentGold.ToString();
     }
 }

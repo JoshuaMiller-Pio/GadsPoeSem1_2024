@@ -7,13 +7,14 @@ using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
+    public int rhinosSaved = 0;
     public GameObject maleRhinoPrefab, femaleRhinoPrefab;
     public Rhino chosenRhino { get; set; }
     public List<GameObject> rhinos = new List<GameObject>();
     public int currentGold, foodCost = 10, medsCost = 20, cleanCost = 20;
     private PrefabManager _prefabManager;
     private WaypointManager _waypointManager;
-
+    private UIManager _uiManager;
     public int  maxSpawnedRhinos = 2;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (SceneManager.GetSceneByBuildIndex(1) == SceneManager.GetActiveScene())
         {
-
+            _uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
             if (rhinos.Count == 0)
             {
                 _prefabManager = GameObject.FindGameObjectWithTag("PrefabManager").GetComponent<PrefabManager>();
@@ -103,7 +104,7 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(1);
         spawnCheck();
         StartCoroutine(waitForScene());
-
+        
     }
 
     IEnumerator waitForScene()
@@ -117,12 +118,14 @@ public class GameManager : Singleton<GameManager>
     }
     public void DestroyRhino()
     {
+        
         foreach (GameObject rhino in rhinos)
         {
             if (rhino == chosenRhino.gameObject)
             {
                 rhinos.Remove(rhino);
                 Destroy(rhino);
+                rhinosSaved++;
                 rhinos[1].SetActive(true);
             }
         }
@@ -134,6 +137,10 @@ public class GameManager : Singleton<GameManager>
         
     }
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void Quit()
     {
         Application.Quit();
@@ -147,6 +154,7 @@ public class GameManager : Singleton<GameManager>
         {
             rhinos[i].SetActive(false);
         }
+        _uiManager.CloseRhinoActions();
         SceneManager.LoadScene(2);
     }
 
@@ -154,14 +162,14 @@ public class GameManager : Singleton<GameManager>
     {
         if (currentGold < 10)
         {
-            //UI not enough gold
-            return;
+           _uiManager.ActivateNoGoldPanel();
         }
         else
         {
             currentGold -= 10;
         
             chosenRhino.ChangeAction(Rhino.RhinoAction.Eat);
+            _uiManager.CloseRhinoActions();
         }
         
     }
@@ -170,13 +178,13 @@ public class GameManager : Singleton<GameManager>
     {
         if (currentGold < 15)
         {
-            //UI not enough gold
-            return;
+            _uiManager.ActivateNoGoldPanel();
         }
         else
         {
             currentGold -= 15;
             chosenRhino.ChangeAction(Rhino.RhinoAction.Clean);
+            _uiManager.CloseRhinoActions();
         }
        
     }
@@ -184,17 +192,18 @@ public class GameManager : Singleton<GameManager>
     public void Sleep()
     {
         chosenRhino.ChangeAction(Rhino.RhinoAction.Sleep);
+        _uiManager.CloseRhinoActions();
     }
 
     public void TakeMeds()
     {
         if (currentGold < 15)
         {
-            //UI not enough gold
-            return;
+            _uiManager.ActivateNoGoldPanel();
         }
         else
         {
+            _uiManager.CloseRhinoActions();
             currentGold -= 15;
             chosenRhino.currentHealth += 20;
         }

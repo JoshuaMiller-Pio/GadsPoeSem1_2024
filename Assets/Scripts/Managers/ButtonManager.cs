@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     private GameManager _gameManager;
+
+    public UIManager _UIManager;
     // Start is called before the first frame update
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _UIManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     public void PlayRhinoRun()
@@ -23,7 +26,11 @@ public class ButtonManager : MonoBehaviour
        _gameManager.chosenRhino = _gameManager.rhinos[0].GetComponent<Rhino>();
        _gameManager.chosenRhino.SelectedRhino();
     }
-    
+
+    public void Pause()
+    {
+        _UIManager.ActivatePauseMenu();
+    }
     public void SelectRhino1()
     {
         _gameManager.chosenRhino = _gameManager.rhinos[1].GetComponent<Rhino>();
@@ -34,9 +41,14 @@ public class ButtonManager : MonoBehaviour
     {
         if (_gameManager.chosenRhino.currentHappiness >= 90)
         {
+            _UIManager.CloseRhinoActions();
             _gameManager.DestroyRhino();
+            
         }
-        
+        else
+        {
+            _UIManager.ActivateNotRecoveredPanel();
+        }
     }
     public void PlayRhinoSafari()
     {
@@ -48,6 +60,10 @@ public class ButtonManager : MonoBehaviour
         _gameManager.PlayGame();
     }
 
+    public void LoadMainMenu()
+    {
+        _gameManager.LoadMainMenu();
+    }
     public void Quit()
     {
         _gameManager.Quit();
