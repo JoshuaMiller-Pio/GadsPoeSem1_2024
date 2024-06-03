@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _GameManager = GameManager.Instance;
+        rhinoCurrentAction.text = "Rhino is currently: walking around enjoying it's enclosure";
     }
 
     private void OnEnable()
@@ -60,22 +61,6 @@ public class UIManager : MonoBehaviour
         currentCleanliness.text = chosenRhino.currentCleanliness.ToString() + "/100";
         currentSleep.text = chosenRhino.currentSleep.ToString() + "/100";
         currentExecercise.text = chosenRhino.currentActivity.ToString() + "/100";
-    }
-
-    public void ShowRhinoOptions(Rhino chosenRhino)
-    {
-        rhnoActions.gameObject.SetActive(true);
-    }
-
-    public void CloseRhinoActions()
-    {
-        rhnoActions.gameObject.SetActive(false);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        rhinosSaved.text = "Rhinos Saved: " + _GameManager.rhinosSaved;
-        currentGold.text = "= " + _GameManager.currentGold.ToString();
         switch (_GameManager.chosenRhino.currentAction)
         {
             case Rhino.RhinoAction.Idle:
@@ -93,6 +78,23 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void ShowRhinoOptions(Rhino chosenRhino)
+    {
+        rhnoActions.gameObject.SetActive(true);
+    }
+
+    public void CloseRhinoActions()
+    {
+        rhnoActions.gameObject.SetActive(false);
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        rhinosSaved.text = "Rhinos Saved: " + _GameManager.rhinosSaved;
+        currentGold.text = "= " + _GameManager.currentGold.ToString();
+        
         
     }
 }
