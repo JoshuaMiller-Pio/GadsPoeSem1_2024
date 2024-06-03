@@ -10,7 +10,7 @@ using UnityEngine.TextCore.Text;
 public class UIManager : MonoBehaviour
 {
     
-    public TMP_Text rhinoName, rhinosSaved, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
+    public TMP_Text rhinoName, rhinoCurrentAction, rhinosSaved, currentGold, currentHealth, currentHappiness, currentSleep, currentCleanliness, currentExecercise, currentHunger;
     public GameObject noGoldPanel, notRecoveredEnoughPanel;
     public Image rhinoPhoto;
     public Canvas rhnoActions, pauseMenu;
@@ -76,5 +76,23 @@ public class UIManager : MonoBehaviour
     {
         rhinosSaved.text = "Rhinos Saved: " + _GameManager.rhinosSaved;
         currentGold.text = "= " + _GameManager.currentGold.ToString();
+        switch (_GameManager.chosenRhino.currentAction)
+        {
+            case Rhino.RhinoAction.Idle:
+                rhinoCurrentAction.text = "Rhino is currently: walking around enjoying it's enclosure";
+                break;
+            case Rhino.RhinoAction.Clean:
+                rhinoCurrentAction.text = "Rhino is currently enjoying a relaxing wash";
+                break;
+            case Rhino.RhinoAction.Eat:
+                rhinoCurrentAction.text = "Rhino is enjoying a delicious meal";
+                break;
+            case Rhino.RhinoAction.Sleep:
+                rhinoCurrentAction.text = "Rhino is sleeping";
+                break;
+            default:
+                break;
+        }
+        
     }
 }
