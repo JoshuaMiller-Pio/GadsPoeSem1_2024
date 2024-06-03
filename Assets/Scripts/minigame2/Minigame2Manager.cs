@@ -20,6 +20,11 @@ public class Minigame2Manager : MonoBehaviour
         JumperPlayerScript.dead += DEAD;
     }
 
+    private void OnDisable()
+    {
+        JumperPlayerScript.dead -= DEAD;
+    }
+
     void Start()
     {
         StartCoroutine(scoreadd());

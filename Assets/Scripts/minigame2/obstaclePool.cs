@@ -10,13 +10,18 @@ public class obstaclePool : MonoBehaviour
 
     public GameObject spawnpoint;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         ObstacleMovement.onSpawnDist += spawnobj;
         spawnobj();
             
        
 
+    }
+
+    private void OnDisable()
+    {
+        ObstacleMovement.onSpawnDist -= spawnobj;
     }
 
     // Update is called once per frame
