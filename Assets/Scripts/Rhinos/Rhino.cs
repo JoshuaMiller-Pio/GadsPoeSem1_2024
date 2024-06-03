@@ -170,6 +170,7 @@ public class Rhino : MonoBehaviour
     {
         agent.destination = waypoints[2].transform.position;
         StartCoroutine(eatNoise());
+        currentHunger += 15;
         if (currentHunger > rhinoScript.maxHunger)
         {
             currentHunger = rhinoScript.maxHunger;
@@ -191,7 +192,7 @@ public class Rhino : MonoBehaviour
     public void Clean()
     {
         agent.destination = waypoints[3].transform.position;
-        
+        currentCleanliness += 15;
         if (currentCleanliness > rhinoScript.maxHunger)
         {
             currentCleanliness = rhinoScript.maxHunger;
@@ -206,7 +207,8 @@ public class Rhino : MonoBehaviour
     public void Sleep()
     {
         agent.destination = waypoints[0].transform.position;
-        
+
+        currentSleep += 15;
         if (currentSleep > rhinoScript.maxHunger)
         {
             currentSleep = rhinoScript.maxHunger;
