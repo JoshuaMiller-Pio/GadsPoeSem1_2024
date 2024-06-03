@@ -56,6 +56,7 @@ public class GameManager : Singleton<GameManager>
         {
             rhinos[i].SetActive(true);
         }
+
     }
     public void PlayRhinoRun()
     {
@@ -92,6 +93,7 @@ public class GameManager : Singleton<GameManager>
                 rhinos.Add(newRhino);
                 
             }
+            
         }
 
         for (int i = 2; i < 10; i++)
@@ -101,6 +103,8 @@ public class GameManager : Singleton<GameManager>
             
             
         }
+        Invoke("startingRhino",0.3f);
+
     }
 
     public void returnToPen()
@@ -215,7 +219,15 @@ public class GameManager : Singleton<GameManager>
             chosenRhino.currentHealth += 20;
         }
     }
+
+    void startingRhino()
+    {
+        chosenRhino = rhinos[0].GetComponent<Rhino>();
+        chosenRhino.SelectedRhino();
+        Debug.Log("selectedR");
+    }
     // Update is called once per frame
+    
     void Update()
     {
         
